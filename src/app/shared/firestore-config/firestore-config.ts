@@ -1,9 +1,9 @@
 export const firebaseConfig = {
-  apiKey: 'AIzaSyB6brV7k7nGFczHNi4Te54XsYiuRzP06ck',
-  authDomain: 'ni-garvn.firebaseapp.com',
-  projectId: 'ni-garvn',
-  storageBucket: 'ni-garvn.appspot.com',
-  messagingSenderId: '685474518147',
-  appId: '1:685474518147:web:3fce911cf7170227a7f7b6',
-  measurementId: 'G-Y23E3PFPEN',
+  apiKey: "AIzaSyB_AWeLprx4rAcGjfcALNyedvo1GhQEJ7w",
+  authDomain: "notificacao-advertencia.firebaseapp.com",
+  projectId: "notificacao-advertencia",
+  storageBucket: "notificacao-advertencia.firebasestorage.app",
+  messagingSenderId: "362166436954",
+  appId: "1:362166436954:web:00f60fdacdbb71cab84463"
+
 };
