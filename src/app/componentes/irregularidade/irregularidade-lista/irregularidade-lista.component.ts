@@ -1,4 +1,4 @@
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule, DatePipe, NgIf } from '@angular/common';
 import {
   Component,
   OnDestroy,
@@ -30,6 +30,7 @@ import { IrregularidadeService } from '../irregularidade.service';
     CommonModule,
     FormsModule,
     NgxMaskDirective,
+    NgIf
 ],
   providers: [DatePipe, provideNgxMask()],
   templateUrl: './irregularidade-lista.component.html',

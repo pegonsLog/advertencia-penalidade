@@ -94,7 +94,7 @@ export const routes: Routes = [
     path: 'irregularidadeLista',
     loadComponent: () =>
       import(
-        '/home/pegons/apps/advertencia-penalidade/src/app/componentes/irregularidade/irregularidade-lista/irregularidade-lista.component'
+        './componentes/irregularidade/irregularidade-lista/irregularidade-lista.component'
       ).then((m) => m.IrregularidadeListaComponent),
     canActivate: [canActivateGuard],
   },
