@@ -75,7 +75,7 @@ export class IrregularidadeAdicionarComponent implements OnDestroy {
     numeroVeiculo: ['', Validators.required],
     numeroLinha: ['', Validators.required],
     dataEmissao: [''],
-    prazoCumprimentoConferencia: [''],
+    prazoCumprimentoConferencia: ['', Validators.required],
     matAgenteConferente: [''],
   });
 
@@ -138,7 +138,10 @@ export class IrregularidadeAdicionarComponent implements OnDestroy {
             numeroVeiculo: [result.numeroVeiculo, Validators.required],
             numeroLinha: [result.numeroLinha, Validators.required],
             dataEmissao: [result.dataEmissao],
-            prazoCumprimentoConferencia: [result.prazoCumprimentoConferencia],
+            prazoCumprimentoConferencia: [
+              result.prazoCumprimentoConferencia,
+              Validators.required,
+            ],
             matAgenteConferente: [result.matAgenteConferente],
           });
           this.validarAgente();
@@ -152,38 +155,37 @@ export class IrregularidadeAdicionarComponent implements OnDestroy {
         .subscribe((irr: IIrregularidades) => {
           const data = new Date().getFullYear();
 
-          (this.numeroUltimaIrregularidade = irr
-            .map((obj) =>{
-                    const partes = obj.numeroIrregularidade.split('/');
+          this.numeroUltimaIrregularidade = irr
+            .map((obj) => {
+              const partes = obj.numeroIrregularidade.split('/');
               return Number(partes[1]);
-        })
-            .reduce(
-              (max, current) => (current > max ? current : max),
-              0
-            ));
+            })
+            .reduce((max, current) => (current > max ? current : max), 0);
 
-            this.numeroUltimaIrregularidade++;
-            const novoNumeroIrregularidade = `${data}/${this.numeroUltimaIrregularidade.toString().padStart(6, '0')}`;
+          this.numeroUltimaIrregularidade++;
+          const novoNumeroIrregularidade = `${data}/${this.numeroUltimaIrregularidade
+            .toString()
+            .padStart(6, '0')}`;
 
-            (this.irregularidadeForm = this.#fb.group({
-              numeroIrregularidade: [
-                novoNumeroIrregularidade,
-                Validators.required,
-              ],
-              dataIrregularidade: ['', Validators.required],
-              horario: ['', Validators.required],
-              matriculaAgente: ['', Validators.required],
-              local: ['', Validators.required],
-              numeroLocal: [''],
-              bairro: [''],
-              descricao: [''],
-              codigoInfracao: ['', Validators.required],
-              numeroVeiculo: ['', Validators.required],
-              numeroLinha: ['', Validators.required],
-              dataEmissao: [''],
-              prazoCumprimentoConferencia: [''],
-              matAgenteConferente: [''],
-            }));
+          this.irregularidadeForm = this.#fb.group({
+            numeroIrregularidade: [
+              novoNumeroIrregularidade,
+              Validators.required,
+            ],
+            dataIrregularidade: ['', Validators.required],
+            horario: ['', Validators.required],
+            matriculaAgente: ['', Validators.required],
+            local: ['', Validators.required],
+            numeroLocal: [''],
+            bairro: [''],
+            descricao: [''],
+            codigoInfracao: ['', Validators.required],
+            numeroVeiculo: ['', Validators.required],
+            numeroLinha: ['', Validators.required],
+            dataEmissao: [''],
+            prazoCumprimentoConferencia: ['', Validators.required],
+            matAgenteConferente: [''],
+          });
         });
     }
   }
@@ -248,6 +250,7 @@ export class IrregularidadeAdicionarComponent implements OnDestroy {
       dataEmissao: [irregularidadeIIrregularidade.dataEmissao],
       prazoCumprimento: [
         irregularidadeIIrregularidade.prazoCumprimentoConferencia,
+        Validators.required,
       ],
       dataCumprimento: [irregularidadeIIrregularidade.matAgenteConferente],
     });
@@ -274,7 +277,7 @@ export class IrregularidadeAdicionarComponent implements OnDestroy {
       numeroVeiculo: ['', Validators.required],
       numeroLinha: ['', Validators.required],
       dataEmissao: [''],
-      prazoCumprimentoConferencia: [''],
+      prazoCumprimentoConferencia: ['', Validators.required],
       matAgenteConferente: [''],
     });
   }

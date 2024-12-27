@@ -12,9 +12,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { Subscription } from 'rxjs';
 import { IAgentes } from '../../../interface/agente';
 import { IInfracoes } from '../../../interface/infracao';
-import {
-  IIrregularidade
-} from '../../../interface/irregularidade';
+import { IIrregularidade } from '../../../interface/irregularidade';
 import { ILinhas } from '../../../interface/linha';
 import { IVeiculos } from '../../../interface/veiculo';
 import { AngularMaterialModule } from '../../../shared/angular-material/angular-material';
@@ -74,7 +72,7 @@ export class IrregularidadeAlterarComponent {
     numeroVeiculo: ['', Validators.required],
     numeroLinha: ['', Validators.required],
     dataEmissao: [''],
-    prazoCumprimentoConferencia: [''],
+    prazoCumprimentoConferencia: ['', Validators.required],
     matAgenteConferente: [''],
   });
 
@@ -147,11 +145,10 @@ export class IrregularidadeAlterarComponent {
             numeroLinha: [result.numeroLinha, Validators.required],
             dataEmissao: [result.dataEmissao],
             prazoCumprimentoConferencia: [
-              result.prazoCumprimentoConferencia
+              result.prazoCumprimentoConferencia,
+              Validators.required,
             ],
-            matAgenteConferente: [
-              result.matAgenteConferente
-            ],
+            matAgenteConferente: [result.matAgenteConferente],
           });
           this.validarAgente();
           this.validarLinha();
@@ -175,12 +172,11 @@ export class IrregularidadeAlterarComponent {
             ehPorNumero: this.porNumero,
             dataInicio: this.dataInicio,
             dataFim: this.dataFim,
-            numeroNotificacao: this.irregularidadeForm.getRawValue().numeroIrregularidade,
+            numeroNotificacao:
+              this.irregularidadeForm.getRawValue().numeroIrregularidade,
           },
         });
-
       });
-
   }
   voltar() {
     this.#route.navigate(['irregularidadeLista'], {
@@ -189,7 +185,8 @@ export class IrregularidadeAlterarComponent {
         ehPorNumero: this.porNumero,
         dataInicio: this.dataInicio,
         dataFim: this.dataFim,
-        numeroNotificacao: this.irregularidadeForm.getRawValue().numeroIrregularidade,
+        numeroNotificacao:
+          this.irregularidadeForm.getRawValue().numeroIrregularidade,
       },
     });
   }
@@ -214,9 +211,7 @@ export class IrregularidadeAlterarComponent {
         Validators.required,
       ],
       local: [irregularidadeIIrregularidade.local, Validators.required],
-      numeroLocal: [
-        irregularidadeIIrregularidade.numeroLocal
-      ],
+      numeroLocal: [irregularidadeIIrregularidade.numeroLocal],
       bairro: [irregularidadeIIrregularidade.bairro],
       descricao: [irregularidadeIIrregularidade.descricao],
       numeroInfracao: [
@@ -231,15 +226,12 @@ export class IrregularidadeAlterarComponent {
         irregularidadeIIrregularidade.numeroLinha,
         Validators.required,
       ],
-      dataEmissao: [
-        irregularidadeIIrregularidade.dataEmissao
-      ],
+      dataEmissao: [irregularidadeIIrregularidade.dataEmissao],
       prazoCumprimentoConferencia: [
-        irregularidadeIIrregularidade.prazoCumprimentoConferencia
+        irregularidadeIIrregularidade.prazoCumprimentoConferencia,
+        Validators.required,
       ],
-      matAgenteConferente: [
-        irregularidadeIIrregularidade.matAgenteConferente
-      ],
+      matAgenteConferente: [irregularidadeIIrregularidade.matAgenteConferente],
     });
   }
 
@@ -264,7 +256,7 @@ export class IrregularidadeAlterarComponent {
       numeroVeiculo: ['', Validators.required],
       numeroLinha: ['', Validators.required],
       dataEmissao: [''],
-      prazoCumprimentoConferencia: [''],
+      prazoCumprimentoConferencia: ['', Validators.required],
       matAgenteConferente: [''],
     });
   }
