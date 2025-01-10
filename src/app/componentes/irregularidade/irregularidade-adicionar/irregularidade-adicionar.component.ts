@@ -64,7 +64,7 @@ export class IrregularidadeAdicionarComponent implements OnDestroy {
 
   irregularidadeForm: FormGroup = this.#fb.group({
     numeroIrregularidade: ['', Validators.required],
-    dataIrregularidade: ['', Validators.required],
+    dataIrregularidade: ['', Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/)],
     horario: ['', Validators.required],
     matriculaAgente: ['', Validators.required],
     local: ['', Validators.required],
@@ -74,8 +74,11 @@ export class IrregularidadeAdicionarComponent implements OnDestroy {
     codigoInfracao: ['', Validators.required],
     numeroVeiculo: ['', Validators.required],
     numeroLinha: ['', Validators.required],
-    dataEmissao: [''],
-    prazoCumprimentoConferencia: ['', Validators.required],
+    dataEmissao: ['', Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/)],
+    prazoCumprimentoConferencia: [
+      '',
+      Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/),
+    ],
     matAgenteConferente: [''],
   });
 
@@ -126,7 +129,7 @@ export class IrregularidadeAdicionarComponent implements OnDestroy {
             ],
             dataIrregularidade: [
               result.dataIrregularidade,
-              Validators.required,
+              Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/),
             ],
             horario: [result.horario, Validators.required],
             matriculaAgente: [result.matriculaAgente, Validators.required],
@@ -137,10 +140,13 @@ export class IrregularidadeAdicionarComponent implements OnDestroy {
             codigoInfracao: [result.codigoInfracao, Validators.required],
             numeroVeiculo: [result.numeroVeiculo, Validators.required],
             numeroLinha: [result.numeroLinha, Validators.required],
-            dataEmissao: [result.dataEmissao],
+            dataEmissao: [
+              result.dataEmissao,
+              Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/),
+            ],
             prazoCumprimentoConferencia: [
               result.prazoCumprimentoConferencia,
-              Validators.required,
+              Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/),
             ],
             matAgenteConferente: [result.matAgenteConferente],
           });
@@ -172,7 +178,10 @@ export class IrregularidadeAdicionarComponent implements OnDestroy {
               novoNumeroIrregularidade,
               Validators.required,
             ],
-            dataIrregularidade: ['', Validators.required],
+            dataIrregularidade: [
+              '',
+              Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/),
+            ],
             horario: ['', Validators.required],
             matriculaAgente: ['', Validators.required],
             local: ['', Validators.required],
@@ -182,8 +191,11 @@ export class IrregularidadeAdicionarComponent implements OnDestroy {
             codigoInfracao: ['', Validators.required],
             numeroVeiculo: ['', Validators.required],
             numeroLinha: ['', Validators.required],
-            dataEmissao: [''],
-            prazoCumprimentoConferencia: ['', Validators.required],
+            dataEmissao: ['', Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/)],
+            prazoCumprimentoConferencia: [
+              '',
+              Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/),
+            ],
             matAgenteConferente: [''],
           });
         });
@@ -224,7 +236,7 @@ export class IrregularidadeAdicionarComponent implements OnDestroy {
       ],
       dataIrregularidade: [
         irregularidadeIIrregularidade.dataIrregularidade,
-        Validators.required,
+        Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/),
       ],
       horario: [irregularidadeIIrregularidade.horario, Validators.required],
       matriculaAgente: [
@@ -247,12 +259,15 @@ export class IrregularidadeAdicionarComponent implements OnDestroy {
         irregularidadeIIrregularidade.numeroLinha,
         Validators.required,
       ],
-      dataEmissao: [irregularidadeIIrregularidade.dataEmissao],
+      dataEmissao: [
+        irregularidadeIIrregularidade.dataEmissao,
+        Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/),
+      ],
       prazoCumprimento: [
         irregularidadeIIrregularidade.prazoCumprimentoConferencia,
-        Validators.required,
+        Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/),
       ],
-      dataCumprimento: [irregularidadeIIrregularidade.matAgenteConferente],
+      matAgenteConferente: [irregularidadeIIrregularidade.matAgenteConferente],
     });
   }
 
@@ -266,7 +281,7 @@ export class IrregularidadeAdicionarComponent implements OnDestroy {
         (this.numeroUltimaIrregularidade + 1).toString(),
         Validators.required,
       ],
-      dataIrregularidade: ['', Validators.required],
+      dataIrregularidade: ['', Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/)],
       horario: ['', Validators.required],
       matriculaAgente: ['', Validators.required],
       local: ['', Validators.required],
@@ -276,8 +291,11 @@ export class IrregularidadeAdicionarComponent implements OnDestroy {
       codigoInfracao: ['', Validators.required],
       numeroVeiculo: ['', Validators.required],
       numeroLinha: ['', Validators.required],
-      dataEmissao: [''],
-      prazoCumprimentoConferencia: ['', Validators.required],
+      dataEmissao: ['', Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/)],
+      prazoCumprimentoConferencia: [
+        '',
+        Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/),
+      ],
       matAgenteConferente: [''],
     });
   }

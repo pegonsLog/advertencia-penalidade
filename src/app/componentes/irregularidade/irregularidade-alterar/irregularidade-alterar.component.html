@@ -41,11 +41,12 @@
             <mat-label>Data</mat-label>
             <input
               matInput
-              placeholder="Data"
+              placeholder="Data*"
               formControlName="dataIrregularidade"
               mask="d0/M0/0000"
               [dropSpecialCharacters]="false"
               tabindex="2"
+              required="true"
             />
           </mat-form-field>
           <mat-form-field class="hora">
@@ -53,7 +54,7 @@
             <input
               type="text"
               matInput
-              placeholder="Hora"
+              placeholder="Hora*"
               formControlName="horario"
               mask="Hh:m0"
               [dropSpecialCharacters]="false"
@@ -64,14 +65,14 @@
             <mat-label>Mat. Ag.</mat-label>
             <input
               matInput
-              placeholder="Mat. Agente"
+              placeholder="Mat. Agente*"
               formControlName="matriculaAgente"
               tabindex="4"
               (blur)="validarAgente()"
             />
           </mat-form-field>
           <mat-form-field class="nomeAgente">
-            <mat-label>Nome Agente</mat-label>
+            <mat-label>Nome Agente*</mat-label>
             <input
               matInput
               readonly="true"
@@ -87,7 +88,7 @@
             <mat-label>Local</mat-label>
             <input
               matInput
-              placeholder="Local"
+              placeholder="Local*"
               formControlName="local"
               tabindex="5"
             />
@@ -116,14 +117,14 @@
             <mat-label>Nº da linha</mat-label>
             <input
               matInput
-              placeholder="Nº Linha"
+              placeholder="Nº Linha*"
               formControlName="numeroLinha"
               tabindex="9"
               (blur)="validarLinha()"
             />
           </mat-form-field>
           <mat-form-field class="full-width">
-            <mat-label>Nome da linha</mat-label>
+            <mat-label>Nome da linha*</mat-label>
             <input
               matInput
               readonly="true"
@@ -139,14 +140,14 @@
             <mat-label>Cód. da infração</mat-label>
             <input
               matInput
-              placeholder="Cód. Infração"
+              placeholder="Cód. Infração*"
               formControlName="codigoInfracao"
               tabindex="10"
               (blur)="validarInfracao()"
             />
           </mat-form-field>
           <mat-form-field class="full-width">
-            <mat-label>Descrição da infração</mat-label>
+            <mat-label>Descrição da infração*</mat-label>
             <input
               matInput
               readonly="true"
@@ -172,14 +173,14 @@
             <mat-label>Nº do Veículo</mat-label>
             <input
               matInput
-              placeholder="Nº Veiculo"
+              placeholder="Nº Veiculo*"
               formControlName="numeroVeiculo"
               tabindex="11"
               (blur)="validarVeiculo()"
             />
           </mat-form-field>
           <mat-form-field class="full-width">
-            <mat-label>Placa do veículo</mat-label>
+            <mat-label>Placa do veículo*</mat-label>
             <input
               matInput
               readonly="true"
@@ -189,7 +190,7 @@
             />
           </mat-form-field>
           <mat-form-field class="full-width">
-            <mat-label>Consórcio</mat-label>
+            <mat-label>Consórcio*</mat-label>
             <input
               matInput
               readonly="true"
@@ -250,11 +251,12 @@
             <mat-label>Prazo de Cumprimento</mat-label>
             <input
               matInput
-              placeholder="Prazo Cumprimento/Conferência"
+              placeholder="Prazo para cumprimento*"
               formControlName="prazoCumprimentoConferencia"
               tabindex="15"
               mask="d0/M0/0000"
               [dropSpecialCharacters]="false"
+              required="true"
             />
           </mat-form-field>
         </div>
@@ -274,6 +276,7 @@
               <button type="button" mat-raised-button (click)="voltar()">
             Cancelar
           </button>
+          <p>Os campos com asterisco (*) são obrigatórios.</p>
         </ng-container>
       </mat-card-actions>
     </form>
