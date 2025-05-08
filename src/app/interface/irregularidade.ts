@@ -1,5 +1,8 @@
 export interface IIrregularidades extends Array<IIrregularidade> {}
 export interface IIrregularidade {
+  placaVeiculo?: string;
+  subconcessionaria?: string;
+  numeroConsorcio?: string;
   id: string;
   numeroIrregularidade: string;
   dataIrregularidade: string;

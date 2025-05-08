@@ -77,7 +77,7 @@ export class ImprimirComponent implements OnDestroy {
                 this.filtradas.push(irreg);
                 this.validarLinha(irreg.numeroLinha);
                 this.validarInfracao(irreg.codigoInfracao);
-                this.validarVeiculo(irreg.numeroVeiculo);
+                this.validarVeiculo(irreg.numeroVeiculo, irreg);
               }
             })
           )
@@ -103,7 +103,7 @@ export class ImprimirComponent implements OnDestroy {
                 // this.validarAgente(irreg.matriculaAgente);
                 this.validarLinha(irreg.numeroLinha);
                 this.validarInfracao(irreg.codigoInfracao);
-                this.validarVeiculo(irreg.numeroVeiculo);
+                this.validarVeiculo(irreg.numeroVeiculo, irreg);
               }
             })
           )
@@ -174,21 +174,32 @@ export class ImprimirComponent implements OnDestroy {
       .subscribe(() => {});
   }
 
-  validarVeiculo(numeroVeiculo: string) {
-    this.subscription = this.#veiculoService
-      .list()
-      .pipe(
-        map((veiculos: IVeiculos) =>
-          veiculos.forEach((veiculo: IVeiculo) => {
-            if (veiculo.numeroVeiculo == numeroVeiculo) {
-              this.placaVeiculo = veiculo.placa;
-              this.subconcessionaria = veiculo.operadora;
-              this.numeroConsorcio = veiculo.consorcio;
-            }
-          })
-        )
-      )
-      .subscribe(() => {});
+  // validarVeiculo(numeroVeiculo: string) {
+  //   this.subscription = this.#veiculoService
+  //     .list()
+  //     .pipe(
+  //       map((veiculos: IVeiculos) =>
+  //         veiculos.forEach((veiculo: IVeiculo) => {
+  //           if (veiculo.numeroVeiculo == numeroVeiculo) {
+  //             this.placaVeiculo = veiculo.placa;
+  //             this.subconcessionaria = veiculo.operadora;
+  //             this.numeroConsorcio = veiculo.consorcio;
+  //           }
+  //         })
+  //       )
+  //     )
+  //     .subscribe(() => {});
+  // }
+
+  validarVeiculo(numeroVeiculo: string, irreg: IIrregularidade) {
+    this.#veiculoService.getByNumeroVeiculo(numeroVeiculo)
+      .subscribe((veiculo) => {
+        if (veiculo) {
+          irreg.placaVeiculo = veiculo.placa;
+          irreg.subconcessionaria = veiculo.operadora;
+          irreg.numeroConsorcio = veiculo.consorcio;
+        }
+      });
   }
 
 }

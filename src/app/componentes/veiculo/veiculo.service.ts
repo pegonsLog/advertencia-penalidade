@@ -9,7 +9,7 @@ import {
   docData,
   updateDoc,
 } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { IVeiculo, IVeiculos } from '../../interface/veiculo';
 
 @Injectable({
@@ -63,4 +63,12 @@ export class VeiculoService {
     return deleteDoc($veiculoRef);
   }
 
+  // veiculo.service.ts
+getByNumeroVeiculo(numeroVeiculo: string): Observable<IVeiculo | undefined> {
+  return this.list().pipe(
+    map((veiculos: IVeiculos) =>
+      veiculos.find((veiculo: IVeiculo) => veiculo.numeroVeiculo === numeroVeiculo)
+    )
+  );
+}
 }
