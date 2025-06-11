@@ -193,7 +193,7 @@ export class ImprimirComponent implements OnDestroy {
 
   validarVeiculo(numeroVeiculo: string, irreg: IIrregularidade) {
     this.#veiculoService.getByNumeroVeiculo(numeroVeiculo)
-      .subscribe((veiculo) => {
+      .subscribe((veiculo: IVeiculo | undefined) => {
         if (veiculo) {
           irreg.placaVeiculo = veiculo.placa;
           irreg.subconcessionaria = veiculo.operadora;
